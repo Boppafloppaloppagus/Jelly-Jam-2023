@@ -48,7 +48,7 @@ public class ThrowController : MonoBehaviour
     private void Update()
     {
         FindPickup();
-        
+        //for some reason when you're moving the mouse presses don't register
         if (holdingSomething && Input.GetKeyDown(throwKey)) //&& readyToThrow)
         {
             Throw();
@@ -57,8 +57,11 @@ public class ThrowController : MonoBehaviour
         {
             Pickup();
         }
-        if(holdingSomething && Input.GetKeyDown(dropKey))
+        if (holdingSomething && Input.GetKeyDown(dropKey))
+        {
             holdingSomething = false;
+            holdingJelly = false;
+        }
 
         HoldObject();
     }
@@ -97,8 +100,7 @@ public class ThrowController : MonoBehaviour
             forceDirection = (hit.point - attackPoint.position).normalized;
         }
         */
-        Debug.Log(forceDirection);
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;//+ playerRb.velocity;
+        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce + playerRb.velocity;
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
 
         //Invoke(nameof(ResetThrows), throwCooldown);
