@@ -40,6 +40,8 @@ public class ThrowController : MonoBehaviour
     public bool holdingSomethingFetchable;
     public bool holdingJelly;
     //----------------------------------------------------------------
+    public bool petTimeNow;
+
     private void Start()
     {
         //readyToThrow = true;
@@ -48,7 +50,6 @@ public class ThrowController : MonoBehaviour
     private void Update()
     {
         FindPickup();
-        //for some reason when you're moving the mouse presses don't register
         if (holdingSomething && Input.GetKeyDown(throwKey)) //&& readyToThrow)
         {
             Throw();
@@ -61,6 +62,14 @@ public class ThrowController : MonoBehaviour
         {
             holdingSomething = false;
             holdingJelly = false;
+        }
+        else if (Input.GetKeyDown(dropKey))
+        {
+            PetTheGoodBoi();
+        }
+        else
+        {
+            petTimeNow = false;
         }
 
         HoldObject();
@@ -121,6 +130,8 @@ public class ThrowController : MonoBehaviour
             seenAnIneractable = true;
             //Now I know about what it is
             interactableObjectInView = interactableInfo.transform.gameObject;
+
+
             interactableObject = interactableObjectInView;
 
             //Highlighting the object for users sake
@@ -139,6 +150,13 @@ public class ThrowController : MonoBehaviour
             objectRenderer.material.SetColor("_Color", new Color(1, 1, 1, 1));
             seenAnIneractable = false;
             interactableObjectInView = null;
+        }
+    }
+    void PetTheGoodBoi()
+    {
+        if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && interactableInfo.collider.gameObject.tag == "Jelly")
+        {
+            petTimeNow = true;
         }
     }
     //This is to signal whether or not the interactable objects transform should have its transform tied to the player

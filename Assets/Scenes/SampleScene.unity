@@ -7312,6 +7312,7 @@ MonoBehaviour:
   interactableObject: {fileID: 638300420}
   holdingSomethingFetchable: 0
   holdingJelly: 0
+  petTimeNow: 0
 --- !u!1 &1294508731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2748299057714156232, guid: 75bfca400ce818b438dfbe92f32714ca, type: 3}
@@ -8656,7 +8657,7 @@ Transform:
   m_GameObject: {fileID: 1523217933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.49, y: 0, z: 0.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
