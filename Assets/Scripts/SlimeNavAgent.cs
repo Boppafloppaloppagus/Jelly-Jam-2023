@@ -16,6 +16,18 @@ using UnityEngine.AI;
 
 public class SlimeNavAgent : MonoBehaviour
 {
+    #region VRMode
+    [Header("VR MODE")]
+    [SerializeField] bool useVRMode;
+    #endregion
+    #region Player Values
+    private ThrowController throwController;
+    private VRThrowController vrThrowController;
+    GameObject interactableObject;
+    bool holdingSomethingFetchable;
+    bool holdingJelly;
+    #endregion
+    [Header("SlimeNavScripts")]
     public GameObject playerStuff;
     public GameObject ballStuff;
     public GameObject foodStuff;
@@ -35,7 +47,7 @@ public class SlimeNavAgent : MonoBehaviour
     private Vector3 dangerZone;
 
     //other scripts
-    private ThrowController throwController;
+
     private FoodChecker foodChecker;
     public GameController gameController;
 
@@ -69,20 +81,31 @@ public class SlimeNavAgent : MonoBehaviour
     {
         //just gettin some components and stuff
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        throwController = playerStuff.GetComponent<ThrowController>();
+        if (useVRMode)
+        {
+            vrThrowController = playerStuff.GetComponent<VRThrowController>();
+        }
+        else
+        {
+            throwController = playerStuff.GetComponent<ThrowController>();
+        }
+
         foodChecker = jellyInteractRadiusContainer.GetComponent<FoodChecker>();
         //Set Initial destination for jelly
         randomPoint = Random.insideUnitSphere * 3 + home.transform.position;
         //this is used later to prevent the jelly from just 
         //grabbing the ball out of the air when its tossed.
         waitASec = 1;
-  
+
         startPoint = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //VRMODE
+        SetupVRMode(useVRMode);
+
         Debug.Log(slimeState);
         //Debug.Log(agent.destination);
         CheckForFetch();
@@ -97,27 +120,27 @@ public class SlimeNavAgent : MonoBehaviour
         */
         //Debug.Log(throwController.holdingJelly);
 
-            
-            switch (slimeState)
-            {
-                case State.MuckAbout:
-                    MuckAbout();
-                    jellySkin.material.SetColor("_Color", new Color(1, 1, 1, 1));
-                    break;
-                case State.Fetch:
-                    Fetch();
-                    break;
-                case State.Food:
-                    Eat();
-                    break;
-                case State.Pet:
-                    break;
-                case State.Beaned:
-                    break;
-                case State.CommitDie:
-                    GoCommitDie();
-                    break;
-            }
+
+        switch (slimeState)
+        {
+            case State.MuckAbout:
+                MuckAbout();
+                jellySkin.material.SetColor("_Color", new Color(1, 1, 1, 1));
+                break;
+            case State.Fetch:
+                Fetch();
+                break;
+            case State.Food:
+                Eat();
+                break;
+            case State.Pet:
+                break;
+            case State.Beaned:
+                break;
+            case State.CommitDie:
+                GoCommitDie();
+                break;
+        }
 
     }
     /*
@@ -178,7 +201,7 @@ public class SlimeNavAgent : MonoBehaviour
     void Fetch()
     {
         agent.enabled = true;//may need to removes these
-        ballStuff = throwController.interactableObject;
+        ballStuff = interactableObject;
         if (!theZone.bounds.Contains(ballStuff.transform.position))
         {
             waitASec = 1;
@@ -186,7 +209,7 @@ public class SlimeNavAgent : MonoBehaviour
             fetchStart = false;
         }
 
-        if (waitASec > 0 &&throwController.holdingSomethingFetchable)
+        if (waitASec > 0 && holdingSomethingFetchable)
         {
             agent.destination = playerInteractRadiusContainer.ClosestPoint(this.transform.position);
         }
@@ -201,13 +224,13 @@ public class SlimeNavAgent : MonoBehaviour
         else if (waitASec <= 0)
         {
             carryingSomething = true;
-            ballStuff.transform.localPosition = this.transform.position + new Vector3 (0,1,0);
+            ballStuff.transform.localPosition = this.transform.position + new Vector3(0, 1, 0);
         }
         if (carryingSomething && Vector3.Distance(this.transform.position, playerStuff.transform.position) > 5)
         {
-            agent.destination = playerInteractRadiusContainer.ClosestPoint(this.transform.position);    
+            agent.destination = playerInteractRadiusContainer.ClosestPoint(this.transform.position);
         }
-        else if(carryingSomething || throwController.holdingJelly)
+        else if (carryingSomething || holdingJelly)
         {
             waitASec = 1;
             carryingSomething = false;
@@ -221,9 +244,9 @@ public class SlimeNavAgent : MonoBehaviour
 
     void GoCommitDie()
     {
-        if (throwController.holdingJelly)
+        if (holdingJelly)
         {
-            
+
             dangerZone = palmTrees[0].position;
             Debug.Log(palmTrees.Length);
             for (int i = 1; i < palmTrees.Length; i++)
@@ -235,14 +258,14 @@ public class SlimeNavAgent : MonoBehaviour
             agent.destination = dangerZone;
             pointSet = true;
         }
-        else if (!pointSet && !throwController.holdingJelly)
+        else if (!pointSet && !holdingJelly)
         {
             int index = Random.Range(0, 3);
             dangerZone = new Vector3(palmTrees[index].position.x, 0, palmTrees[index].position.z);
             agent.destination = dangerZone;
             pointSet = true;
         }
-        else if (Vector3.Distance(this.transform.position, agent.destination) <= 2 && !throwController.holdingJelly)
+        else if (Vector3.Distance(this.transform.position, agent.destination) <= 2 && !holdingJelly)
         {
             jellySkin.material.SetColor("_Color", new Color(1, 0, 0, 1));
             agent.enabled = false;
@@ -254,7 +277,7 @@ public class SlimeNavAgent : MonoBehaviour
     //I need this for when the player throws the ball and the fetch state isn't actually over
     void CheckForFetch()
     {
-        if (throwController.holdingSomethingFetchable && theZone.bounds.Contains(this.transform.position) && theZone.bounds.Contains(playerStuff.transform.position))
+        if (holdingSomethingFetchable && theZone.bounds.Contains(this.transform.position) && theZone.bounds.Contains(playerStuff.transform.position))
         {
             fetchStart = true;
         }
@@ -285,8 +308,8 @@ public class SlimeNavAgent : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------checking for things ends here
     void BeanMeUpScotty()
-    { 
-        if(timer > 0)
+    {
+        if (timer > 0)
         {
 
         }
@@ -301,9 +324,24 @@ public class SlimeNavAgent : MonoBehaviour
             slimeState = State.Fetch;
         else if (!playerInZone || pointSet == true && !theZone.bounds.Contains(this.transform.position))
             slimeState = State.CommitDie; //change this later - changed
-        else if(playerInZone && theZone.bounds.Contains(this.transform.position))
+        else if (playerInZone && theZone.bounds.Contains(this.transform.position))
             slimeState = State.MuckAbout;
 
     }
-   
+    void SetupVRMode(bool value)
+    {
+        if (value)
+        {
+            interactableObject = vrThrowController.interactableObject;
+            holdingSomethingFetchable = vrThrowController.isHoldingSomethingFetchable;
+            holdingJelly = vrThrowController.isHoldingJelly;
+        }
+        else
+        {
+            interactableObject = throwController.interactableObject;
+            holdingSomethingFetchable = throwController.holdingSomethingFetchable;
+            holdingJelly = throwController.holdingJelly;
+        }
+    }
+
 }
