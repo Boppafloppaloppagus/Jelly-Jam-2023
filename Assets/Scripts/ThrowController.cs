@@ -38,8 +38,10 @@ public class ThrowController : MonoBehaviour
     bool setNewHeldObject;
     //this is being used by the nav agent to start the fetching mechanic
     public bool holdingSomethingFetchable;
-    public bool holdingJelly;
+
     //----------------------------------------------------------------
+    public bool holdingJelly;
+    public bool calledJelly;
     public bool petTimeNow;
 
     private void Start()
@@ -65,11 +67,21 @@ public class ThrowController : MonoBehaviour
         }
         else if (Input.GetKeyDown(dropKey))
         {
-            PetTheGoodBoi();
+
+            if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && interactableInfo.collider.gameObject.tag == "Jelly")
+            {
+                Debug.Log("Raycast Hit");
+                PetTheGoodBoi();
+            }
+            else
+            {
+                CallTheGoodBoi();
+            }
         }
         else
         {
             petTimeNow = false;
+            calledJelly = false;
         }
 
         HoldObject();
@@ -154,10 +166,11 @@ public class ThrowController : MonoBehaviour
     }
     void PetTheGoodBoi()
     {
-        if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && interactableInfo.collider.gameObject.tag == "Jelly")
-        {
             petTimeNow = true;
-        }
+    }
+    void CallTheGoodBoi()
+    {
+        calledJelly = true;
     }
     //This is to signal whether or not the interactable objects transform should have its transform tied to the player
     private void Pickup()
