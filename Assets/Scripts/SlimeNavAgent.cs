@@ -5,14 +5,7 @@ using UnityEngine.AI;
 
 //this script has been poorly named and is now unofficially the SlimeEverythingController.
 
-/*
- * when the player is within the volume follow the player but never leave the volume 
- * if the next volume is outside the sphere stay in the current one???? 
- * sit still while player is looking if time allows, else just leave the zone
- * only throw nav agent and fruit
- * do the raycast pet and /playanim or whatever the hell.
- * stop pucntuating comments with semi colons;
- */
+
 
 public class SlimeNavAgent : MonoBehaviour
 {
@@ -74,8 +67,13 @@ public class SlimeNavAgent : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         throwController = playerStuff.GetComponent<ThrowController>();
         foodChecker = jellyInteractRadiusContainer.GetComponent<FoodChecker>();
-        //Set Initial destination for jelly
+
+        //Set Initial destination for jelly, and intialize components for MuckAbout state.
+        wait = Random.Range(5f, 15f);
         randomPoint = Random.insideUnitSphere * 3 + home.transform.position;
+        randomPoint = new Vector3(randomPoint.x, this.transform.position.y, randomPoint.z);
+        agent.destination = randomPoint;
+
         //this is used later to prevent the jelly from just 
         //grabbing the ball out of the air when its tossed.
         waitASec = 1;
@@ -86,7 +84,8 @@ public class SlimeNavAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(slimeState);
+        //Debug.Log(slimeState);
+        
         CheckForFetch();
         CheckForFood();
         CheckForPetTime();
@@ -122,15 +121,7 @@ public class SlimeNavAgent : MonoBehaviour
     //methods associated with states
     void MuckAbout()
     {
-        agent.enabled = true;//may need to removes these
-        // pointSet = false;
-        //Debug.Log(randomPoint);
-        if (Vector3.Distance(this.transform.position, randomPoint) > 1)
-        {
-            agent.destination = randomPoint;
-            wait = 5f;
-        }
-        else
+        if (Vector3.Distance(this.transform.position, randomPoint) <= 2)
         {
             if (wait > 0)
             {
@@ -138,16 +129,16 @@ public class SlimeNavAgent : MonoBehaviour
             }
             else
             {
-                randomPoint = Random.insideUnitSphere * 3 + home.transform.position;
-                randomPoint = new Vector3(randomPoint.x, 0, randomPoint.z);
+                randomPoint = Random.insideUnitSphere * 5 + home.transform.position;
+                randomPoint = new Vector3(randomPoint.x, this.transform.position.y, randomPoint.z);
+                agent.destination = randomPoint;
+                wait = Random.Range(5f, 15f);
             }
         }
-
     }
 
     void Eat()
     {
-        agent.enabled = true;//may need to removes these
         if (Vector3.Distance(this.transform.position, foodStuff.transform.position) > 1)
             agent.destination = foodStuff.transform.position;
         else
@@ -159,7 +150,6 @@ public class SlimeNavAgent : MonoBehaviour
 
     void Fetch()
     {
-        agent.enabled = true;//may need to removes these
         ballStuff = throwController.interactableObject;
         if (!theZone.bounds.Contains(ballStuff.transform.position))
         {
