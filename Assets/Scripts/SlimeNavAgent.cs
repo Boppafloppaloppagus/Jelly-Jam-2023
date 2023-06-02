@@ -173,7 +173,6 @@ public class SlimeNavAgent : MonoBehaviour
     {
         agent.enabled = true;//may need to removes these
         pointSet = false;
-        Debug.Log(randomPoint);
         if (Vector3.Distance(this.transform.position, randomPoint) > 1)
         {
             agent.destination = randomPoint;
@@ -324,8 +323,8 @@ public class SlimeNavAgent : MonoBehaviour
             slimeState = State.Fetch;
         else if (!playerInZone || pointSet == true && !theZone.bounds.Contains(this.transform.position))
             slimeState = State.CommitDie; //change this later - changed
-        else if (playerInZone && theZone.bounds.Contains(this.transform.position))
-            slimeState = State.MuckAbout;
+       // else if (playerInZone && theZone.bounds.Contains(this.transform.position))
+         //   slimeState = State.MuckAbout;
 
     }
     void SetupVRMode(bool value)
@@ -343,5 +342,6 @@ public class SlimeNavAgent : MonoBehaviour
             holdingJelly = throwController.holdingJelly;
         }
     }
+   
 
 }

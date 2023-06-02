@@ -8,6 +8,7 @@ public class VRHandAnimationController : MonoBehaviour
     public InputActionProperty pinchAnimationProperty;
     public InputActionProperty grabAnimationProperty;
     Animator anim;
+    public VRThrowController controller;    
 
     private void Start()
     {
@@ -20,6 +21,13 @@ public class VRHandAnimationController : MonoBehaviour
 
         anim.SetFloat("Trigger",pinchValue);
         anim.SetFloat("Grab", grabValue);
+        if (controller.isGrabbing)
+        {
+            anim.SetBool("wantsGrab", true);
+        }else
+        {
+            anim.SetBool("wantsGrab", false);
+        }
     }
 
 }

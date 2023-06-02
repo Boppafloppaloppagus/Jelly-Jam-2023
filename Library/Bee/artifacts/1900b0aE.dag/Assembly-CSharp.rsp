@@ -120,6 +120,7 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
+-define:USE_INPUT_SYSTEM_POSE_CONTROL
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"C:/Program Files/Unity/Hub/Editor/2022.2.9f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
@@ -391,6 +392,7 @@
 "Assets/Scripts/SlimeNavAgent.cs"
 "Assets/Scripts/ThrowController.cs"
 "Assets/Scripts/VRScripts/VRHandAnimationController.cs"
+"Assets/Scripts/VRScripts/VRPettingInteraction.cs"
 "Assets/Scripts/VRScripts/VRThrowController.cs"
 -langversion:9.0
 
