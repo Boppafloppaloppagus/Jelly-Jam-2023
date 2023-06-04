@@ -1,0 +1,541 @@
+Using pre-set license
+Built from '2022.2/staging' branch; Version is '2022.2.9f1 (1cc571a6ec95) revision 1885553'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'en' Physical Memory: 16085 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2022.2.9f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker11
+-projectPath
+C:/Users/Rosta/Documents/GitHub/Jelly-Jam-2023
+-logFile
+Logs/AssetImportWorker11.log
+-srvPort
+57672
+Successfully changed project path to: C:/Users/Rosta/Documents/GitHub/Jelly-Jam-2023
+C:/Users/Rosta/Documents/GitHub/Jelly-Jam-2023
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [26988] Host "[IP] 10.0.0.7 [Port] 0 [Flags] 2 [Guid] 2223602999 [EditorId] 2223602999 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [26988] Host "[IP] 10.0.0.7 [Port] 0 [Flags] 2 [Guid] 2223602999 [EditorId] 2223602999 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 5.89 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.2.9f1 (1cc571a6ec95)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.2.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Rosta/Documents/GitHub/Jelly-Jam-2023/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Ti Laptop GPU (ID=0x25a0)
+    Vendor:   NVIDIA
+    VRAM:     3990 MB
+    Driver:   31.0.15.2230
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2022.2.9f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2022.2.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 2022.2.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56596
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2022.2.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005087 seconds.
+- Loaded All Assemblies, in  0.240 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.207 seconds
+Domain Reload Profiling:
+	ReloadAssembly (143ms)
+		BeginReloadAssembly (64ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		LoadAllAssembliesAndSetupDomain (0ms)
+			LoadAssemblies (63ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (92ms)
+				TypeCache.Initialize (91ms)
+					TypeCache.ScanAssembly (90ms)
+				ResolveRequiredComponents (0ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (161ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (6ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (110ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Rosta\Documents\GitHub\Jelly-Jam-2023\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Rosta\Documents\GitHub\Jelly-Jam-2023\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.542 seconds
+Refreshing native plugins compatible for Editor in 2.34 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.364 seconds
+Domain Reload Profiling:
+	ReloadAssembly (165ms)
+		BeginReloadAssembly (99ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (18ms)
+		LoadAllAssembliesAndSetupDomain (376ms)
+			LoadAssemblies (197ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (223ms)
+				TypeCache.Initialize (208ms)
+					TypeCache.ScanAssembly (204ms)
+				ResolveRequiredComponents (3ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (256ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (4ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (45ms)
+				ProcessInitializeOnLoadAttributes (185ms)
+				ProcessInitializeOnLoadMethodAttributes (14ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 2.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3128 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (67.5 KB). Loaded Objects now: 3594.
+Memory consumption went from 488.9 MB to 488.8 MB.
+Total: 2.613000 ms (FindLiveObjects: 0.258700 ms CreateObjectMapping: 0.105900 ms MarkObjects: 2.133800 ms  DeleteObjects: 0.113100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/Berries.cs: 6d8a347e81657036ac37d4cf69b0ab98 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 284549.748253 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_PalmFernBerry/FernBerryNew.mat
+  artifactKey: Guid(534229519a349c34580207b8f98794bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_PalmFernBerry/FernBerryNew.mat using Guid(534229519a349c34580207b8f98794bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '332ce72342e5d0c51d9377846aa5c023') in 0.111828 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 39.043237 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_PalmFernBerry/Foliage_PalmFernBerry_lambert1_Normal.png
+  artifactKey: Guid(7cc5f8f08259de94799ebc09b5a4ef9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_PalmFernBerry/Foliage_PalmFernBerry_lambert1_Normal.png using Guid(7cc5f8f08259de94799ebc09b5a4ef9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68f134759240e139ba9d98cd20340599') in 0.032225 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 6.190891 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_PalmFern/Foliage_PalmFern_lambert1_Normal.png
+  artifactKey: Guid(0b2f41b061a9ea142b53f4026f8d04d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_PalmFern/Foliage_PalmFern_lambert1_Normal.png using Guid(0b2f41b061a9ea142b53f4026f8d04d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '107185737b063e7d7716dd5380e6a784') in 0.018775 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 2.230569 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_Shrub
+  artifactKey: Guid(6c89d1d434fb58a46b0be376b34c44a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_Shrub using Guid(6c89d1d434fb58a46b0be376b34c44a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fb3390e52b55683caf4eb3380b63b52') in 0.000563 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.110742 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_Shrub/Foliage_Shrub_lambert1_Albedo.png
+  artifactKey: Guid(3850e41482d1c0d419b8ceac24f5676a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_Shrub/Foliage_Shrub_lambert1_Albedo.png using Guid(3850e41482d1c0d419b8ceac24f5676a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd46618203264940bb8c727e80a1ccbe') in 0.018599 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_Shrub/Foliage_Shrub_lambert1_Height.png
+  artifactKey: Guid(aff92d522777b95419e541e434e3d4d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_Shrub/Foliage_Shrub_lambert1_Height.png using Guid(aff92d522777b95419e541e434e3d4d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba01add2fbd8a8360d35451daf962c84') in 0.023824 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 24.782461 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_Shrub/ShrubNew.mat
+  artifactKey: Guid(7b6c661017165224ebd372e0afb35737) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_Shrub/ShrubNew.mat using Guid(7b6c661017165224ebd372e0afb35737) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bacc33d5c0cd6fa1c42d179929df62d1') in 0.020781 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 19.771214 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_Shrub/Foliage_Shrub_lambert1_Normal.png
+  artifactKey: Guid(7d142bcab2bba1b4399e1cdacaf604f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_Shrub/Foliage_Shrub_lambert1_Normal.png using Guid(7d142bcab2bba1b4399e1cdacaf604f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08caf730a7f6bcfac7c4fcfae06a7d6f') in 0.014868 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 15.580137 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry
+  artifactKey: Guid(0315b52542c63c24392246ba370fd284) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry using Guid(0315b52542c63c24392246ba370fd284) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1b0b5e06d6ab347f855e9afdf5c68ed') in 0.000551 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.714840 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Albedo.png
+  artifactKey: Guid(73ecaff27a72fe942b67283ffb12fd1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Albedo.png using Guid(73ecaff27a72fe942b67283ffb12fd1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd116ffa67dfca7302992e1d18c3e7b3') in 0.016566 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Normal.png
+  artifactKey: Guid(472fb94822af5cf47a84658b2d270121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Normal.png using Guid(472fb94822af5cf47a84658b2d270121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2c47a29db79607d8f49cd27c3ae51b0') in 0.009930 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Metallic.png
+  artifactKey: Guid(76daa508da503464cb85f37da65f85f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Metallic.png using Guid(76daa508da503464cb85f37da65f85f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b3d714619598f3388da3d26a7fa2e83') in 0.020247 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Height.png
+  artifactKey: Guid(b98595cb8adf97340a473423f1caa559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Height.png using Guid(b98595cb8adf97340a473423f1caa559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd162c13de0d26f1ae19aaf60045dac8f') in 0.009608 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 13.305732 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/ShrubBerry.mat
+  artifactKey: Guid(5dd590836bbf7214e94ddac13deb1f6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/ShrubBerry.mat using Guid(5dd590836bbf7214e94ddac13deb1f6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '324880fe4624595bfda025b1596bcee3') in 0.020615 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 17.365626 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/ShrubBerryNew.mat
+  artifactKey: Guid(fe2efd2b2f196ce4182f72edb31e527a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/ShrubBerryNew.mat using Guid(fe2efd2b2f196ce4182f72edb31e527a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba1e88f3ec13139ca18e2ec0b8e60d27') in 0.019613 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 13.288926 seconds.
+  path: Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Normal.png
+  artifactKey: Guid(472fb94822af5cf47a84658b2d270121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/Foliage 1/Foliage_ShrubBerry/Foliage_ShrubBerry_lambert1_Normal.png using Guid(472fb94822af5cf47a84658b2d270121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1d8008338f8699383c144607a878e30') in 0.019203 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 30.462733 seconds.
+  path: Assets/NewModels/RocksWalls
+  artifactKey: Guid(b274dc1781c356142977d3f27c585da5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls using Guid(b274dc1781c356142977d3f27c585da5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a78705fa5bfe11a8a2846b0104269813') in 0.000585 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.844289 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_1
+  artifactKey: Guid(7ef7331cd20972042a0284ae24d68b28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_1 using Guid(7ef7331cd20972042a0284ae24d68b28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a075e0e52322fb9dd817b03e0b3bc1e') in 0.001301 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.066528 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_1/Wall_1_lambert1_Albedo.png
+  artifactKey: Guid(0494fe34ebd40b34daeb418161c7a28d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_1/Wall_1_lambert1_Albedo.png using Guid(0494fe34ebd40b34daeb418161c7a28d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c482929cdfd872cb29413c2cd94108dd') in 0.017690 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_1/Wall_1_lambert1_Metallic.png
+  artifactKey: Guid(674b098ba48c2d341927014b7c68b1c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_1/Wall_1_lambert1_Metallic.png using Guid(674b098ba48c2d341927014b7c68b1c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f6a4f8bf5f6ec3b5d3334608f54d0d5') in 0.029407 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_1/Wall_1_lambert1_Height.png
+  artifactKey: Guid(fa78b1869d17bf04cb1a049b6d2fb11a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_1/Wall_1_lambert1_Height.png using Guid(fa78b1869d17bf04cb1a049b6d2fb11a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '812eae9f72eebcd93eac665ad8c7a59f') in 0.019451 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 24.685262 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_1/NewWall1.mat
+  artifactKey: Guid(1c63af85d7408af47a4084d7bcde4a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_1/NewWall1.mat using Guid(1c63af85d7408af47a4084d7bcde4a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bbacf4bc27afa7d594a816811e73a5d') in 0.012751 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Rosta\Documents\GitHub\Jelly-Jam-2023\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Rosta\Documents\GitHub\Jelly-Jam-2023\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.553 seconds
+Refreshing native plugins compatible for Editor in 2.79 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.816 seconds
+Domain Reload Profiling:
+	ReloadAssembly (177ms)
+		BeginReloadAssembly (118ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (35ms)
+		LoadAllAssembliesAndSetupDomain (374ms)
+			LoadAssemblies (197ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (221ms)
+				TypeCache.Initialize (218ms)
+					TypeCache.ScanAssembly (212ms)
+				ResolveRequiredComponents (4ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (371ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (5ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (70ms)
+				ProcessInitializeOnLoadAttributes (254ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Refreshing native plugins compatible for Editor in 3.84 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3107 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.6 KB). Loaded Objects now: 3642.
+Memory consumption went from 489.3 MB to 489.2 MB.
+Total: 3.162200 ms (FindLiveObjects: 0.281400 ms CreateObjectMapping: 0.082900 ms MarkObjects: 2.726700 ms  DeleteObjects: 0.070300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/Berries.cs: 6d8a347e81657036ac37d4cf69b0ab98 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Rosta\Documents\GitHub\Jelly-Jam-2023\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Rosta\Documents\GitHub\Jelly-Jam-2023\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.552 seconds
+Refreshing native plugins compatible for Editor in 2.58 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.790 seconds
+Domain Reload Profiling:
+	ReloadAssembly (181ms)
+		BeginReloadAssembly (119ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (33ms)
+		LoadAllAssembliesAndSetupDomain (368ms)
+			LoadAssemblies (196ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (222ms)
+				TypeCache.Initialize (219ms)
+					TypeCache.ScanAssembly (213ms)
+				ResolveRequiredComponents (3ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (375ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (3ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (71ms)
+				ProcessInitializeOnLoadAttributes (264ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Refreshing native plugins compatible for Editor in 3.84 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3108 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (37.9 KB). Loaded Objects now: 3645.
+Memory consumption went from 489.5 MB to 489.5 MB.
+Total: 2.898200 ms (FindLiveObjects: 0.266700 ms CreateObjectMapping: 0.096400 ms MarkObjects: 2.485000 ms  DeleteObjects: 0.049500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/Berries.cs: 6d8a347e81657036ac37d4cf69b0ab98 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 379.420050 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_2
+  artifactKey: Guid(54cc76594ad9d534baf6e1168c8e191b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_2 using Guid(54cc76594ad9d534baf6e1168c8e191b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d3e4024c2773d6a6edc095b93af5811') in 0.002390 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 55.289664 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_3
+  artifactKey: Guid(c6973b3680512b145b2f741ea1a58d23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_3 using Guid(c6973b3680512b145b2f741ea1a58d23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7d7471d4b290598a414d0adbeace78e') in 0.001336 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.740613 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_2/Wall_2_lambert1_Albedo.png
+  artifactKey: Guid(0d668f6cba3aad64296b6f3696fcfbec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_2/Wall_2_lambert1_Albedo.png using Guid(0d668f6cba3aad64296b6f3696fcfbec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '087f2628bb92560790eb3e3c7f8c432f') in 0.052564 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_2/Wall_2_lambert1_Metallic.png
+  artifactKey: Guid(625a392eb87650c4ca6891347dd8b4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_2/Wall_2_lambert1_Metallic.png using Guid(625a392eb87650c4ca6891347dd8b4bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c4004e0bc670bae9d724621facaa1b9') in 0.027787 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_2/Wall_2_lambert1_Normal.png
+  artifactKey: Guid(c5bf8bfe857a72f41bbb9868c5b708e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_2/Wall_2_lambert1_Normal.png using Guid(c5bf8bfe857a72f41bbb9868c5b708e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '880c29a7a6f1f693f0b3f913b8b36cac') in 0.017286 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 59.282597 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_3/Wall_3_lambert1_AO.png
+  artifactKey: Guid(1f8dd0e9e633ed042a1b00151c140ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_3/Wall_3_lambert1_AO.png using Guid(1f8dd0e9e633ed042a1b00151c140ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e29d04c198a2bfd9f6ee34793e84e0b2') in 0.024707 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_3/Wall_3_lambert1_Normal.png
+  artifactKey: Guid(dab07dbdd02aa4441bdc291459ed7bc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_3/Wall_3_lambert1_Normal.png using Guid(dab07dbdd02aa4441bdc291459ed7bc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e841898489cf80f54e37e46804e7645') in 0.020008 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 88.551354 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_4/Wall_4_lambert1_AO.png
+  artifactKey: Guid(eb3839b10f403e64c959776f289ad035) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_4/Wall_4_lambert1_AO.png using Guid(eb3839b10f403e64c959776f289ad035) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb9d710a778d021997a1c749059366e4') in 0.018271 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/NewModels/RocksWalls/Wall_4/Wall_4_lambert1_Height.png
+  artifactKey: Guid(9d9c1b84344a24947a748d37bc375b1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewModels/RocksWalls/Wall_4/Wall_4_lambert1_Height.png using Guid(9d9c1b84344a24947a748d37bc375b1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '790e0c1de8c10cd703a51c385a1c4e9f') in 0.026265 seconds 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

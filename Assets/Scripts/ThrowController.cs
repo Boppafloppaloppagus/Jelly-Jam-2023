@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThrowController : MonoBehaviour
 {
@@ -28,35 +29,48 @@ public class ThrowController : MonoBehaviour
     public float pickupRange;
     //I want to know what I can interact with
     public LayerMask interactableObjectMask;
+    public LayerMask jellyLayerMask;
     private RaycastHit interactableInfo;
     private GameObject interactableObjectInView;
     public GameObject interactableObject;
     Renderer objectRenderer;
     //making sure I can do things without other things freaking out
     bool seenAnIneractable;
-    bool holdingSomething;
+    public bool holdingSomething;
     bool setNewHeldObject;
     //this is being used by the nav agent to start the fetching mechanic
     public bool holdingSomethingFetchable;
-
+    //hand UI stuff
+    public Image[] crosshair;
     //----------------------------------------------------------------
     public bool holdingJelly;
     public bool calledJelly;
     public bool petTimeNow;
 
+    //----------------------------------------------------------------
+    public AudioSource whistle;
+    public AudioClip[] whistleClips;
+    int audioIndex;
+
     private void Start()
     {
         //readyToThrow = true;
+        audioIndex = whistleClips.Length - 1;
     }
 
     private void Update()
     {
-        FindPickup();
+        if(!holdingSomething)
+            FindPickup();
+        else
+            HoldObject();
+
+
         if (holdingSomething && Input.GetKeyDown(throwKey)) //&& readyToThrow)
         {
             Throw();
         }
-        else if ( Input.GetKeyDown(throwKey)) //&& readyToThrow)
+        else if (Input.GetKeyDown(throwKey)) //&& readyToThrow)
         {
             Pickup();
         }
@@ -65,17 +79,27 @@ public class ThrowController : MonoBehaviour
             holdingSomething = false;
             holdingJelly = false;
         }
-        else if (Input.GetKeyDown(dropKey))
+        else if (Input.GetKey(dropKey))
         {
 
-            if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && interactableInfo.collider.gameObject.tag == "Jelly")
+            if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, jellyLayerMask) && interactableInfo.collider.gameObject.tag == "Jelly")
             {
                 Debug.Log("Raycast Hit");
                 PetTheGoodBoi();
             }
-            else
+            else if(Input.GetKeyDown(dropKey))
             {
-                CallTheGoodBoi();
+                if (audioIndex > whistleClips.Length - 1)
+                {
+                    audioIndex = 0;
+                }
+                else
+                {
+                    whistle.clip = whistleClips[audioIndex];
+                    whistle.Play(0);
+                    audioIndex++;
+                    CallTheGoodBoi();
+                }
             }
         }
         else
@@ -84,9 +108,9 @@ public class ThrowController : MonoBehaviour
             calledJelly = false;
         }
 
-        HoldObject();
+
     }
-    /*
+    /* && interactableInfo.collider.gameObject.tag == "Jelly"
      * 
      * 
      * 
@@ -102,8 +126,9 @@ public class ThrowController : MonoBehaviour
         //readyToThrow = false;
         //-----------------------------------------------------
         holdingSomething = false;
-        holdingSomethingFetchable = false; 
+        holdingSomethingFetchable = false;
         holdingJelly = false;
+        changeCrosshair(0);
         //--------------------------------------------------
 
         GameObject projectile = interactableObject;//Instantiate(objectThrow, attackPoint.position, cam.rotation);
@@ -112,7 +137,7 @@ public class ThrowController : MonoBehaviour
 
         Vector3 forceDirection = cam.transform.forward;
 
-  
+
         /*
         RaycastHit hit;
         
@@ -139,34 +164,28 @@ public class ThrowController : MonoBehaviour
     {
         if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && !seenAnIneractable)
         {
+
             seenAnIneractable = true;
+            changeCrosshair(1);
             //Now I know about what it is
             interactableObjectInView = interactableInfo.transform.gameObject;
 
 
             interactableObject = interactableObjectInView;
 
-            //Highlighting the object for users sake
-            if (!holdingSomething)
-            {
-                objectRenderer = interactableObjectInView.GetComponent<Renderer>();
-
-                objectRenderer.material.SetColor("_Color", new Color(0, 1, 0, 1));
-            }
-
 
         }
         //Stop Highlighting
-        else if(!Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && seenAnIneractable)
+        else if (!Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask) && seenAnIneractable)
         {
-            objectRenderer.material.SetColor("_Color", new Color(1, 1, 1, 1));
+            changeCrosshair(0);
             seenAnIneractable = false;
             interactableObjectInView = null;
         }
     }
     void PetTheGoodBoi()
     {
-            petTimeNow = true;
+        petTimeNow = true;
     }
     void CallTheGoodBoi()
     {
@@ -174,7 +193,7 @@ public class ThrowController : MonoBehaviour
     }
     //This is to signal whether or not the interactable objects transform should have its transform tied to the player
     private void Pickup()
-    { 
+    {
         if (Physics.Raycast(cam.position, cam.forward, out interactableInfo, pickupRange, interactableObjectMask))
             holdingSomething = true;
     }
@@ -183,6 +202,7 @@ public class ThrowController : MonoBehaviour
     {
         if (holdingSomething)
         {
+            changeCrosshair(2);
             interactableObject.transform.position = attackPoint.transform.position;
             interactableObject.transform.rotation = attackPoint.transform.rotation;
             if (interactableObject.tag == "Fetchable")
@@ -192,10 +212,19 @@ public class ThrowController : MonoBehaviour
                 holdingJelly = true;
             }
         }
-        else if(interactableObjectInView = null)
+        else if (interactableObjectInView = null)
         {
             interactableObject = null;
         }
+    }
+
+    void changeCrosshair(int n)
+    {
+        for (int i = 0; i < crosshair.Length; i++)
+        {
+            crosshair[i].gameObject.SetActive(false);
+        }
+        crosshair[n].gameObject.SetActive(true);
     }
     //----------------------------
 }

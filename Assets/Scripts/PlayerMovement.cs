@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         //readyToJump = true;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
+        Physics.IgnoreLayerCollision(7, 6);
         //startYScale = transform.localScale.y;
     }
     void Update()

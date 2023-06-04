@@ -49,6 +49,9 @@ public class SlimeNavAgent : MonoBehaviour
     float wait;
     float timer;
 
+    public AudioSource eatAudio;
+    public AudioSource petAudio;
+
     enum State
     {
         MuckAbout,
@@ -121,7 +124,8 @@ public class SlimeNavAgent : MonoBehaviour
     //methods associated with states
     void MuckAbout()
     {
-        if (Vector3.Distance(this.transform.position, randomPoint) <= 2)
+
+        if (Vector3.Distance(this.transform.position, agent.destination) <= 2)
         {
             if (wait > 0)
             {
@@ -129,20 +133,39 @@ public class SlimeNavAgent : MonoBehaviour
             }
             else
             {
+                //Debug.Log("destination set");
                 randomPoint = Random.insideUnitSphere * 5 + home.transform.position;
                 randomPoint = new Vector3(randomPoint.x, this.transform.position.y, randomPoint.z);
                 agent.destination = randomPoint;
-                wait = Random.Range(5f, 15f);
+                wait = Random.Range(3f, 10f);
             }
         }
+        //Debug.Log(agent.destination);
     }
 
     void Eat()
     {
+        /*
+        if (throwController.holdingSomething)
+        {
+            // ObjA is looking mostly towards ObjB
+            agent.destination = playerInteractRadiusContainer.ClosestPoint(this.transform.position);
+            wait = 1.5f;
+
+        }
+        else if (wait > 0)
+        {
+            wait -= Time.deltaTime;
+
+        }
+        */
         if (Vector3.Distance(this.transform.position, foodStuff.transform.position) > 1)
             agent.destination = foodStuff.transform.position;
+        else if (Vector3.Distance(this.transform.position, foodStuff.transform.position) > 3)
+            foodStart = false;
         else
         {
+            //eatAudio.Play();
             foodStuff.SetActive(false);
             foodStart = false;
         }
@@ -195,6 +218,7 @@ public class SlimeNavAgent : MonoBehaviour
     {
         Debug.Log("Congrats, you've pet the cube.");
         petStart = false;
+        //petAudio.Play();
         //do stuff 
     }
 
@@ -238,7 +262,9 @@ public class SlimeNavAgent : MonoBehaviour
     void CheckForPetTime()
     {
         if (throwController.petTimeNow)
+        {
             petStart = true;
+        }
     }
 
     void CheckForCall()

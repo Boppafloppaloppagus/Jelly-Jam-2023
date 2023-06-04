@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BerryResetti
     - CameraController
     - FoodChecker
     - MoveCamera
@@ -8,6 +9,8 @@ ScriptsOnlyBuild:
     - PlzNoThrowOffEdge
     - SlimeNavAgent
     - ThrowController
+    Unity.AI.Navigation.Editor.dll:
+    - Unity.AI.Navigation.Editor.NavMeshAssetManager
     Unity.AI.Navigation.dll:
     - Unity.AI.Navigation.NavMeshSurface
     Unity.Rider.Editor.dll:
@@ -93,6 +96,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2180}
     - Class: 114
+      Script: {instanceID: 2356}
+    - Class: 114
       Script: {instanceID: 2500}
     - Class: 114
       Script: {instanceID: 2596}
@@ -103,25 +108,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3478}
     - Class: 114
-      Script: {instanceID: 4074}
+      Script: {instanceID: 3910}
     - Class: 114
-      Script: {instanceID: 4322}
+      Script: {instanceID: 4076}
     - Class: 114
-      Script: {instanceID: 4326}
+      Script: {instanceID: 4324}
     - Class: 114
-      Script: {instanceID: 5020}
+      Script: {instanceID: 4328}
     - Class: 114
-      Script: {instanceID: 5200}
+      Script: {instanceID: 5022}
     - Class: 114
-      Script: {instanceID: 5586}
+      Script: {instanceID: 5202}
     - Class: 114
-      Script: {instanceID: 6046}
+      Script: {instanceID: 5588}
     - Class: 114
-      Script: {instanceID: 6314}
+      Script: {instanceID: 6048}
     - Class: 114
-      Script: {instanceID: 6536}
+      Script: {instanceID: 6316}
     - Class: 114
-      Script: {instanceID: 7826}
+      Script: {instanceID: 6538}
+    - Class: 114
+      Script: {instanceID: 54186}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -129,8 +136,6 @@ ScriptsOnlyBuild:
     - Class: 135
       Script: {instanceID: 0}
     - Class: 136
-      Script: {instanceID: 0}
-    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -248,18 +253,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Berries
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 9b3f397f9d278ba065c62604f9c7508f
+      Hash: 940ffb34dcf3dff0bf40f3a86d05f67c
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerMovement
@@ -499,6 +498,12 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
+      Hash: 956f89bd4500673b8f937cd29062421d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SlimeNavAgent
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -571,7 +576,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: fff3073a7ea74bf6dab7a805d06c3144
+      Hash: 656119c660e906d8072cb857737228d8
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: ThrowController
@@ -1057,10 +1062,10 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 00174938f540461c52035fdcd534ddef
+      Hash: cd68d4fb9c24ae8a26fced1fa3304fc8
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: SlimeNavAgent
+    className: BerryResetti
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
