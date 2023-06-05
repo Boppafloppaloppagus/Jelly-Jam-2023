@@ -9,6 +9,19 @@ using UnityEngine.AI;
 
 public class SlimeNavAgent : MonoBehaviour
 {
+    #region VRMode
+    [Header("VR MODE")]
+    [SerializeField] bool useVRMode;
+    #endregion
+    #region Player Values
+    private ThrowController throwController;
+    private VRThrowController vrThrowController;
+    GameObject interactableObject;
+    bool holdingSomethingFetchable;
+    bool holdingJelly;
+    bool petTimeNow;
+    bool calledJelly;
+    #endregion
     public GameObject playerStuff;
     public GameObject ballStuff;
     public GameObject foodStuff;
@@ -18,7 +31,20 @@ public class SlimeNavAgent : MonoBehaviour
     public SphereCollider theZone;
 
     public Renderer jellySkin;
+    [Header("Animation")]
+    public Animator jellyAnimator;
+    public string jellyWalkAnimName;
+    public string jellyIdleAnimName;
+    public string jellyEatAnimName;
+    public string jellyPetAnimName;
 
+    [Header("Sound")]
+    public AudioSource jellyAudioSource;
+    public AudioClip eatAudio;
+    public AudioClip petAudio;
+    public AudioClip walkAudio;
+
+    Rigidbody rb;
 
     public Transform[] palmTrees;
     private Vector3 withoutThatStupidY;
@@ -28,7 +54,6 @@ public class SlimeNavAgent : MonoBehaviour
     private Vector3 dangerZone;
 
     //other scripts
-    private ThrowController throwController;
     private FoodChecker foodChecker;
     public GameController gameController;
 
@@ -44,13 +69,12 @@ public class SlimeNavAgent : MonoBehaviour
     bool haveIBeenCalled;
     bool pointSet;
 
-
+    public float force;
     float waitASec;
     float wait;
     float timer;
 
-    public AudioSource eatAudio;
-    public AudioSource petAudio;
+    Vector3 lastPos;
 
     enum State
     {
@@ -66,9 +90,17 @@ public class SlimeNavAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         //just gettin some components and stuff
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        throwController = playerStuff.GetComponent<ThrowController>();
+        if (useVRMode)
+        {
+            vrThrowController = playerStuff.GetComponent<VRThrowController>();
+        }
+        else
+        {
+            throwController = playerStuff.GetComponent<ThrowController>();
+        }
         foodChecker = jellyInteractRadiusContainer.GetComponent<FoodChecker>();
 
         //Set Initial destination for jelly, and intialize components for MuckAbout state.
@@ -87,8 +119,11 @@ public class SlimeNavAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //VRMODE
+        SetupVRMode(useVRMode);
+
         //Debug.Log(slimeState);
-        
+        ApplyAudioWhenWalking();
         CheckForFetch();
         CheckForFood();
         CheckForPetTime();
@@ -119,6 +154,29 @@ public class SlimeNavAgent : MonoBehaviour
                 break;
         }
 
+    }
+    //bad naming
+    void ApplyAudioWhenWalking()
+    {
+        //This is bad practice but rb and agent.isstopped is not realiable in the moment
+        if (Vector3.Distance(transform.position,lastPos) > 0.08f)
+        {
+            lastPos = transform.position;
+            if (!jellyAudioSource.isPlaying)
+            {
+
+                jellyAudioSource.clip = walkAudio;
+                jellyAudioSource.loop = true;
+                jellyAudioSource.Play();
+            }
+            jellyAnimator.SetBool("IsWalking",true);
+        }
+        else if (jellyAudioSource.isPlaying)
+        {
+            jellyAudioSource.loop = false;
+            jellyAnimator.SetBool("IsWalking", false);
+        }
+        
     }
 
     //methods associated with states
@@ -165,7 +223,18 @@ public class SlimeNavAgent : MonoBehaviour
             foodStart = false;
         else
         {
-            //eatAudio.Play();
+            if (!jellyAudioSource.isPlaying||jellyAudioSource.clip == walkAudio)
+            {
+                jellyAudioSource.clip = eatAudio;
+                jellyAudioSource.loop = false;
+                jellyAudioSource.Play();
+            }
+            //Not a good fix it'll get bugged and i don't have the resources to see if it will work
+            if ((jellyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1||jellyAnimator.GetCurrentAnimatorStateInfo(0).IsName(jellyIdleAnimName) || jellyAnimator.GetCurrentAnimatorStateInfo(0).IsName(jellyWalkAnimName))&&!jellyAnimator.GetCurrentAnimatorStateInfo(0).IsName(jellyEatAnimName))
+            {
+                //Change Here to Animation Name
+                jellyAnimator.Play(jellyEatAnimName);
+            }
             foodStuff.SetActive(false);
             foodStart = false;
         }
@@ -173,7 +242,7 @@ public class SlimeNavAgent : MonoBehaviour
 
     void Fetch()
     {
-        ballStuff = throwController.interactableObject;
+        ballStuff = interactableObject;
         if (!theZone.bounds.Contains(ballStuff.transform.position))
         {
             waitASec = 1;
@@ -181,7 +250,7 @@ public class SlimeNavAgent : MonoBehaviour
             fetchStart = false;
         }
 
-        if (waitASec > 0 && throwController.holdingSomethingFetchable)
+        if (waitASec > 0 && holdingSomethingFetchable)
         {
             agent.destination = playerInteractRadiusContainer.ClosestPoint(this.transform.position);
         }
@@ -202,13 +271,23 @@ public class SlimeNavAgent : MonoBehaviour
         {
             agent.destination = playerInteractRadiusContainer.ClosestPoint(this.transform.position);
         }
-        else if (carryingSomething || throwController.holdingJelly)
+        else if (carryingSomething || holdingJelly)
         {
-            waitASec = 1;
-            carryingSomething = false;
-            fetchStart = false;
-            Vector3 forceToAdd = this.transform.forward * 5 + transform.up * 5;
-            ballStuff.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
+            //Debug.Log(Vector3.Angle(transform.forward, playerStuff.transform.position - transform.position));
+            float angle = Vector3.Angle(transform.forward, playerStuff.transform.position - transform.position);
+            if (angle > 15)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(playerStuff.transform.position - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 3 * Time.deltaTime);
+            }
+            else
+            {
+                waitASec = 1;
+                carryingSomething = false;
+                fetchStart = false;
+                Vector3 forceToAdd = this.transform.forward * 15;
+                ballStuff.GetComponent<Rigidbody>().AddForce(forceToAdd, ForceMode.Impulse);
+            }
         }
         //If the player is still holding the ball I want to follow him, otherwise if he's released the ball and I don't have it I want to go grab it
 
@@ -218,8 +297,17 @@ public class SlimeNavAgent : MonoBehaviour
     {
         Debug.Log("Congrats, you've pet the cube.");
         petStart = false;
-        //petAudio.Play();
-        //do stuff 
+        if (!jellyAudioSource.isPlaying) {
+            jellyAudioSource.clip = petAudio;
+            jellyAudioSource.loop = false;
+            jellyAudioSource.Play();
+        }
+        if (jellyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            //Change Here to Animation Name
+            jellyAnimator.Play(jellyPetAnimName);
+        }
+       
     }
 
     void Called()
@@ -244,7 +332,7 @@ public class SlimeNavAgent : MonoBehaviour
     //I need this for when the player throws the ball and the fetch state isn't actually over
     void CheckForFetch()
     {
-        if (throwController.holdingSomethingFetchable && theZone.bounds.Contains(this.transform.position) && theZone.bounds.Contains(playerStuff.transform.position))
+        if (holdingSomethingFetchable && theZone.bounds.Contains(this.transform.position) && theZone.bounds.Contains(playerStuff.transform.position))
         {
             fetchStart = true;
         }
@@ -261,7 +349,7 @@ public class SlimeNavAgent : MonoBehaviour
 
     void CheckForPetTime()
     {
-        if (throwController.petTimeNow)
+        if (petTimeNow)
         {
             petStart = true;
         }
@@ -269,7 +357,7 @@ public class SlimeNavAgent : MonoBehaviour
 
     void CheckForCall()
     {
-        if (throwController.calledJelly)
+        if (calledJelly)
             haveIBeenCalled = true;
 
     }
@@ -308,6 +396,28 @@ public class SlimeNavAgent : MonoBehaviour
             slimeState = State.MuckAbout;
 
     }
+
+
+    void SetupVRMode(bool value)
+    {
+        if (value)
+        {
+            interactableObject = vrThrowController.interactableObject;
+            holdingSomethingFetchable = vrThrowController.isHoldingSomethingFetchable;
+            holdingJelly = vrThrowController.isHoldingJelly;
+            petTimeNow = vrThrowController.petTimeNow;
+            calledJelly = vrThrowController.calledJelly;
+        }
+        else
+        {
+            interactableObject = throwController.interactableObject;
+            holdingSomethingFetchable = throwController.holdingSomethingFetchable;
+            holdingJelly = throwController.holdingJelly;
+            petTimeNow = throwController.petTimeNow;
+            calledJelly = throwController.calledJelly;
+        }
+    }
+
     //past ere be old stuff me wanted saved.
     /*
     void GoCommitDie()
